@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Pemesanan Barang</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            print-color-adjust: exact
+        }
+        body {
+            font-family: "Times New Roman", Times, serif;
+            background: #e9e9e9;
+            margin: 0;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+        }
+        .form-container {
+            width: 690px;
+            max-width: 100%;
+            border: 4px double #0000AA;
+            background: #00FFFF;
+        }
+        .form-header {
+            background: #0000FF;
+            padding: 35px 15px;
+            text-align: center;
+        }
+        .form-header h1 {
+            color: #FFFFFF;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 0;
+        }
+        .form-body {
+            padding: 20px 30px 25px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        td {
+            padding: 9px 4px;
+            font-size: 16px;
+            color: #000000;
+            vertical-align: middle;
+        }
+        .label-cell {
+            width: 150px;
+            white-space: nowrap;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 220px;
+            max-width: 100%;
+            padding: 4px 6px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 15px;
+            border: 1px solid #666666;
+            background: #FFFFFF;
+        }
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        button {
+            margin-left: 8px;
+            padding: 3px 14px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Form Pemesanan Barang</h1>
+        </div>
+
+        <div class="form-body">
+            <form name="formPemesanan" onsubmit="return false;">
+                <table>
+                    <tr>
+                        <td class="label-cell"><label for="kodeBarang">Kode Barang</label></td>
+                        <td>
+                            <input type="text" id="kodeBarang" name="kodeBarang">
+                            <button type="button" onclick="tebak()">Tebak</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="namaBarang">Nama Barang</label></td>
+                        <td><input type="text" id="namaBarang" name="namaBarang" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="hargaBarang">Harga Barang</label></td>
+                        <td><input type="text" id="hargaBarang" name="hargaBarang" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="jumlahBarang">Jumlah Barang</label></td>
+                        <td>
+                            <input type="number" id="jumlahBarang" name="jumlahBarang" min="0" step="1">
+                            <button type="button" onclick="hitung()">Hitung</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="totalHarga">Total Harga</label></td>
+                        <td><input type="text" id="totalHarga" name="totalHarga" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="diskon">Diskon</label></td>
+                        <td><input type="text" id="diskon" name="diskon" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell"><label for="totalBayar">Total Bayar</label></td>
+                        <td><input type="text" id="totalBayar" name="totalBayar" readonly></td>
+                    </tr>
+                </table>
+
+                <div class="cetak-row">
+                    <button type="button" onclick="cetak()">Cetak</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function tebak() {
+            var kode = document.formPemesanan.kodeBarang.value;
+
+            if (kode == "A001") {
+                document.formPemesanan.namaBarang.value = 'Televisi Samsung 50';
+                document.formPemesanan.hargaBarang.value = 5000000;
+            } else if (kode == "A002") {
+                document.formPemesanan.namaBarang.value = "VCD Player Sony";
+                document.formPemesanan.hargaBarang.value = 750000;
+            } else if (kode == "A003") {
+                document.formPemesanan.namaBarang.value = "Mini Compo";
+                document.formPemesanan.hargaBarang.value = 2300000;
+            } else {
+                alert("Kode Barang tidak ditemukan! Gunakan A001, A002, atau A003.");
+                document.formPemesanan.namaBarang.value = "";
+                document.formPemesanan.hargaBarang.value = "";
+            }
+
+            document.formPemesanan.jumlahBarang.value = "";
+            document.formPemesanan.totalHarga.value = "";
+            document.formPemesanan.diskon.value = "";
+            document.formPemesanan.totalBayar.value = "";
+        }
+
+        function hitung() {
+            var harga = parseFloat(document.formPemesanan.hargaBarang.value);
+            var jumlah = parseInt(document.formPemesanan.jumlahBarang.value);
+
+            if (document.formPemesanan.namaBarang.value == "" || isNaN(harga)) {
+                alert("Isi Kode Barang lalu klik tombol Tebak terlebih dahulu.");
+                return;
+            }
+            if (isNaN(jumlah) || jumlah <= 0) {
+                alert("Isi Jumlah Barang dengan angka yang valid.");
+                return;
+            }
+
+            var totalHarga = harga * jumlah;
+            var diskon = 0;
+
+            if (jumlah > 10) {
+                diskon = Math.round(0.12 * harga);
+            }
+
+            var totalBayar = totalHarga - diskon;
+
+            document.formPemesanan.totalHarga.value = totalHarga;
+            document.formPemesanan.diskon.value = diskon;
+            document.formPemesanan.totalBayar.value = totalBayar;
+        }
+
+        function cetak() {
+            window.print();
+        }
+    </script>
+
+</body>
+</html>

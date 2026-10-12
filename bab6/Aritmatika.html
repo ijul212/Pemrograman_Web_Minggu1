@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Operator Matematika dengan
+        Javascript</title>
+    <style>
+        .container {
+            width: 650px;
+            margin: auto;
+            border: 1px dotted greenyellow;
+            padding: 10px;
+            background: greenyellow;
+            color: darkgreen;
+        }
+
+        h2 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        table {
+            background: springgreen;
+            margin: auto;
+        }
+
+        td {
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Form Pemesanan Barang</h2>
+        <table border="1" cellpadding="0" cellspacing="0">
+            <tr>
+                <th>No</th>
+                <th>Nama Barang</th>
+                <th>harga</th>
+                <th>jumlah</th>
+            </tr>
+            <tr>
+                <th>1</th>
+                <th>Televisi 40 Inchi</th>
+                <th>
+                    @<input type="text" name="harga" id="algoritma" size="7" value="4750000" readonly />
+                </th>
+                <th>
+                    @<input type="number" name="jumlah_algoritma" id="harga_tv" size="7" value="0" onchange="total()" />
+                </th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>Mini Compo</th>
+                <th>
+                    @<input type="text" name="harga" id="javascript" size="7" value="1500000" readonly />
+                </th>
+                <th>
+                    @<input type="number" name="jumlah_javascript" id="harga_compo" size="7" value="0"
+                        onchange="total()" />
+                </th>
+            </tr>
+            <tr>
+                <th>3</th>
+                <th>Kamera Sony</th>
+                <th>
+                    @<input type="text" name="harga" id="php" size="7" value="2000000" readonly />
+                </th>
+                <th>
+                    @<input type="number" name="jumlah_php" id="harga_kamera" size="7" value="0" onchange="total()" />
+                </th>
+            </tr>
+            <tr>
+                <th colspan="3" style="text-align:right">jumlah total</th>
+                <th>
+                    @<input type="text" name="total_jumlah" id="total" size="20" value="" readonly />
+                </th>
+            </tr>
+        </table>
+        <br /><br />
+        <center><input type="button" onclick="window.print()" value="cetak" /></center>
+        <script type="text/javascript">
+            function total() {
+                var vtv =
+                    4750000 *
+                    parseInt(document.getElementById("harga_tv").value);
+                var vcompo =
+                    1500000 *
+                    parseInt(document.getElementById("harga_compo").value);
+                var vkamera =
+                    2000000 *
+                    parseInt(document.getElementById("harga_kamera").value)
+                    ;
+                var jumlah_harga = vtv + vcompo + vkamera;
+                document.getElementById("total").value =
+                    jumlah_harga;
+            }
+        </script>
+    </div>
+</body>
+
+</html>
