@@ -1,0 +1,52 @@
+body {
+    background-color: darkgray;
+}
+
+.menu-table {
+    width: 100%;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+.menu-title {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.menu-table td:not(.menu-title) {
+    text-align: center;
+    padding: 6px;
+}
+
+.menu-table a {
+    display: block;
+    padding: 8px 10px;
+    background-color: yellow;
+    color: black;
+    text-decoration: none;
+    border: 1px solid #22476C;
+    box-shadow: 0px 4px 0px #22476C;
+    border-radius: 3px;
+    transition: all 0.1s ease;
+}
+
+.menu-table a:link,
+.menu-table a:visited {
+    color: black;
+}
+
+.menu-table a:hover {
+    background-color: #4C86C0;
+    color: #EED929;
+    box-shadow: 0px 4px 0px #22476C,
+                inset 0px 0px 5px #22476C;
+}
+
+.menu-table a:active {
+    transform: translateY(4px);
+    box-shadow: 0px 0px 0px #22476C;
+}

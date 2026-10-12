@@ -1,0 +1,10 @@
+.welcome-text {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.welcome-text p {
+    margin: 0 0 1em 0;
+}

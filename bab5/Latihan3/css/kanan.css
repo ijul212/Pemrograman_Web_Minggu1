@@ -1,0 +1,20 @@
+body {
+    background-color: darkgray;
+}
+
+.menu {
+    text-align: center;
+}
+
+.menu img {
+    width: 27%;
+    height: 100px;
+}
+
+.menu a {
+    font-family: "Arial Narrow", Arial, sans-serif;
+    font-size: 10pt;
+    color: blue;
+    display: block;
+    margin: 5px 0;
+}
